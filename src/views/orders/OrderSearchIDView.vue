@@ -4,6 +4,6 @@
 
 <template>
   <div>
-    Desde order view
+    Desde Consulta order
   </div>
 </template>

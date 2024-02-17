@@ -9,7 +9,7 @@
   <div class="flex justify-between">
     <h1 class="text-2xl lg:text-6xl font-black text-white">Store U2</h1>
     <div class="flex flex-col space-y-5">
-      <div class="flex gap-2 items-center">
+      <div class="flex gap-2 items-center justify-end">
         <p class="text-white text-right">Hola: {{ user.getUserName }}</p>
         <button
             type="button"
@@ -22,13 +22,13 @@
         <RouterLink
             class="p-3 text-gray-200 uppercase text-xs font-black rounded-lg"
             :to="{name: 'my-orders'}">
-          Mis citas
+          Consultar por fecha
         </RouterLink>
         <RouterLink
-            :to="{name: 'my-orders'}"
+            :to="{name: 'search-order-id'}"
             class="p-3 text-gray-200 uppercase text-xs font-black rounded-lg bg-blue-700"
         >
-          Nueva cita
+          Consultar por ID
         </RouterLink>
       </nav>
     </div>

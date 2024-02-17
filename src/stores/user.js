@@ -1,7 +1,7 @@
 import {ref, onMounted, computed} from "vue";
 import {defineStore} from "pinia";
 import {useRouter} from "vue-router";
-import AuthAPI from "../Api/AuthApi.js";
+import AuthAPI from "../Api/AuthAPI.js";
 
 export const useUserStore = defineStore('user', () => {
 

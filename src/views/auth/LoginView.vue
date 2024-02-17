@@ -1,5 +1,5 @@
 <script setup>
-  import AuthApi from "../../Api/AuthApi.js";
+  import AuthApi from "../../Api/AuthAPI.js";
   import {reset} from "@formkit/vue";
   import {inject} from "vue";
   import router from "../../router/index.js";
