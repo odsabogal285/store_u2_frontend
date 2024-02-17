@@ -10,19 +10,39 @@ export const useOrderStore = defineStore('orders', () =>{
 
     watch(dateValue, async () => {
         try {
-            const {data} = await OrderAPI.getOrderByDate({
+            const {data} = await OrderAPI.getOrderByDateOrId({
                 date:  converDate(dateValue.value)
             });
             orders.value = data.data.orders
-
         } catch (error) {
             console.log(error)
         }
-    })
+    });
+
+    function resetOrders () {
+        orders.value = [];
+        dateValue.value = '';
+    }
+
+    async function getOrdersForID (formData) {
+        try {
+
+            const {data} = await OrderAPI.getOrderByDateOrId({
+                order_id:  formData.order_id
+            });
+
+            orders.value = data.data.orders
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
 
     return {
         orders,
-        dateValue
+        dateValue,
+        resetOrders,
+        getOrdersForID
     }
 });

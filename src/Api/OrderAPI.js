@@ -1,7 +1,7 @@
 import api from "../lib/axios.js";
 
 export default {
-    getOrderByDate (data) {
+    getOrderByDateOrId (data) {
         return api.post('/orders-date', data);
     }
 }

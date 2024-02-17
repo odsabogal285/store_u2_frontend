@@ -11,6 +11,9 @@
 <template>
   <div class="block text-blue-500 bg-white p-5 space-y-4 rounded-lg">
     <p class="text-blue-500 font-black">
+      ID: <span class="text-gray-500">{{order.id}}</span>
+    </p>
+    <p class="text-blue-500 font-black">
       Subtotal: <span class="text-gray-500">{{order.subtotal}}</span>
     </p>
     <div class="text-blue-500  font-black">

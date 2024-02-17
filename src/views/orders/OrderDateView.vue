@@ -40,7 +40,7 @@
               :key="order.id"
               :order="order"
           />
-      </div>
+        </div>
       </div>
     </div>
   </div>
