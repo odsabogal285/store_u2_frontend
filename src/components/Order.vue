@@ -26,10 +26,12 @@
         :item="product"
         class="text-gray-500 font-black"
     />
-    <button
-        class="p-3 text-gray-200 uppercase text-xs font-black rounded-lg bg-blue-700"
+    <br>
+    <RouterLink
+        class="bg-slate-600 rounded-lg p-3 text-white text-sm uppercase font-black flex-1 md:flex-none"
+        :to="{name: 'show-order', params: { id: order.id}}"
     >
       Ver orden
-    </button>
+    </RouterLink>
   </div>
 </template>

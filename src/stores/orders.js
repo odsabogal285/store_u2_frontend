@@ -5,11 +5,15 @@ import {converDate} from "../helpers/dates.js";
 
 export const useOrderStore = defineStore('orders', () =>{
 
-    const orders = ref({});
+    const orders = ref([]);
+    const order = ref([]);
     const dateValue = ref('');
 
     watch(dateValue, async () => {
         try {
+            if(dateValue.value === ''){
+                return
+            }
             const {data} = await OrderAPI.getOrderByDateOrId({
                 date:  converDate(dateValue.value)
             });
@@ -24,6 +28,10 @@ export const useOrderStore = defineStore('orders', () =>{
         dateValue.value = '';
     }
 
+    function setOrder (fromOrder) {
+        order.value = fromOrder;
+    }
+
     async function getOrdersForID (formData) {
         try {
 
@@ -32,7 +40,7 @@ export const useOrderStore = defineStore('orders', () =>{
             });
 
             orders.value = data.data.orders
-            
+
         } catch (error) {
             console.log(error)
         }
@@ -42,7 +50,9 @@ export const useOrderStore = defineStore('orders', () =>{
     return {
         orders,
         dateValue,
+        order,
         resetOrders,
-        getOrdersForID
+        getOrdersForID,
+        setOrder
     }
 });

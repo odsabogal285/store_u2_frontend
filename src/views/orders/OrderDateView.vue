@@ -5,8 +5,6 @@
 
   const orders = useOrderStore();
 
-  //const dateValue = ref([])
-
  import VueTailwindDatepicker from 'vue-tailwind-datepicker'
 
  const formatter = ref({

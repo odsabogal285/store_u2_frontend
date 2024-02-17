@@ -41,6 +41,17 @@ const router = createRouter({
                     path: 'consulta-id',
                     name: 'search-order-id',
                     component: () => import('../views/orders/OrderSearchIDView.vue')
+                },
+                {
+                    path: ':id/detalles-order',
+                    component: () => import('../views/orders/EditOrderLayout.vue'),
+                    children: [
+                        {
+                            path: '',
+                            name: 'show-order',
+                            component: () => import('../views/orders/ShowOrderView.vue')
+                        }
+                    ]
                 }
             ]
         }
