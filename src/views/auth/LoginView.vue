@@ -4,6 +4,7 @@
   import {inject} from "vue";
   import router from "../../router/index.js";
 
+
   const toast = inject('toast');
   const handleSubmit = async (formData) => {
     try {
@@ -18,7 +19,7 @@
         reset('loginForm');
         setTimeout(() => {
           router.push({name: 'my-orders'})
-        }, 1000);
+        }, 500);
       }
     } catch (error) {
       console.log(error);

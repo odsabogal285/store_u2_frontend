@@ -6,5 +6,11 @@ export default {
     },
     register (data) {
         return api.post('/register', data);
+    },
+    me (data) {
+        return api.get('/me');
+    },
+    logout () {
+        return api.post('/logout')
     }
 }
