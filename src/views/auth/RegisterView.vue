@@ -18,7 +18,7 @@
         reset('registerForm');
         setTimeout(() => {
           router.push({name: 'login'})
-        }, 5000);
+        }, 500);
       }
     } catch (error) {
       console.log(error);
