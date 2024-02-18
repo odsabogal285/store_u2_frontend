@@ -1,5 +1,6 @@
 <script setup>
   import OrderItem from "./OrderItem.vue";
+  import {formatCurrency} from "../helpers/currency.js";
 
   defineProps({
     order: {
@@ -14,7 +15,7 @@
       ID: <span class="text-gray-500">{{order.id}}</span>
     </p>
     <p class="text-blue-500 font-black">
-      Subtotal: <span class="text-gray-500">{{order.subtotal}}</span>
+      Subtotal: <span class="text-gray-500">{{formatCurrency(order.subtotal)}}</span>
     </p>
     <div class="text-blue-500  font-black">
       Prioridad: <span class="text-gray-500">{{order.priority}}</span>

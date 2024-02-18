@@ -1,6 +1,7 @@
 <script setup>
   import {useOrderStore} from "../../stores/orders.js";
   import OrderItemProviders from "../../components/OrderItemProviders.vue";
+  import {formatCurrency} from "../../helpers/currency.js";
 
   const store = useOrderStore();
 </script>
@@ -13,9 +14,6 @@
     <div class="block text-blue-500 bg-white p-5 space-y-4 rounded-lg">
       <p class="text-blue-500 font-black">
         ID: <span class="text-gray-500">{{store.order.id}}</span>
-      </p>
-      <p class="text-blue-500 font-black">
-        Subtotal: <span class="text-gray-500">{{store.order.subtotal}}</span>
       </p>
       <div class="text-blue-500  font-black">
         Prioridad: <span class="text-gray-500">{{store.order.priority}}</span>
@@ -47,6 +45,18 @@
               scope="col"
               class="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
           >
+            Precio unitario
+          </th>
+          <th
+              scope="col"
+              class="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
+          >
+            Precio total
+          </th>
+          <th
+              scope="col"
+              class="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
+          >
             Proveedores
           </th>
         </tr>
@@ -69,6 +79,16 @@
                 {{item.product.stock}}
               </td>
               <td
+                  class="px-6 py-4 text-sm font-bold text-center whitespace-nowrap"
+              >
+                {{formatCurrency(item.unit_price)}}
+              </td>
+              <td
+                  class="px-6 py-4 text-sm font-bold text-center whitespace-nowrap"
+              >
+                {{formatCurrency(item.total_price)}}
+              </td>
+              <td
                   class="px-6 py-4 text-sm font-bold text-right whitespace-nowrap"
                   v-if="(item.quantity > item.product.stock)"
               >
@@ -88,6 +108,20 @@
               </td>
             </tr>
           </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">
+              <p class="text-blue-500 font-black text-right">
+                Subtotal:
+              </p>
+            </td>
+            <td >
+              <p class="text-blue-500 font-black text-center">
+                <span class="text-gray-500">{{formatCurrency(store.order.subtotal)}}</span>
+              </p>
+            </td>
+          </tr>
+        </tfoot>
       </table>
       <br>
     </div>
