@@ -16,8 +16,8 @@
 
 <template>
   <div>
-    <h2 class="text-4xl font-extrabold text-white mt-10">Ordenes</h2>
-    <p class="text-white text-lg mt-5"> A continuación podrás ver todas las ordenes por fecha </p>
+    <h2 class="text-4xl font-extrabold text-white mt-10">Órdenes</h2>
+    <p class="text-white text-lg mt-5"> A continuación podrás ver todas las órdenes por fecha </p>
 
     <div class="space-y-8 mt-5">
       <h3 class="text-3xl font-extrabold text-white"> Fecha</h3>
