@@ -22,15 +22,73 @@
       </div>
       <p class="text-lg font-black">Items:  </p>
 
-      <ul class="list-disc ml-4">
-        <li v-for="item in store.order.items">
-          <OrderItemProviders
-              :key="item.id"
-              :item="item"
-              class="text-gray-500 font-black"
-          />
-        </li>
-      </ul>
+      <table class="w-full">
+        <thead class="bg-gray-50">
+        <tr>
+          <th
+              scope="col"
+              class="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase"
+          >
+            Nombre
+          </th>
+          <th
+              scope="col"
+              class="px-6 py-3 text-xs font-bold text-left text-gray-500 uppercase"
+          >
+            Cantidad pedida
+          </th>
+          <th
+              scope="col"
+              class="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
+          >
+            En inventario hay
+          </th>
+          <th
+              scope="col"
+              class="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase"
+          >
+            Proveedores
+          </th>
+        </tr>
+        </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr v-for="item in store.order.items">
+              <td
+                  class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap"
+              >
+                {{ item.product.name }}  <i v-if="(item.quantity > item.product.stock)"  class="fas fa-exclamation-triangle" style="color: orange;"></i>
+              </td>
+              <td
+                  class="px-6 py-4 text-sm font-bold text-center whitespace-nowrap"
+              >
+                {{item.quantity}}
+              </td>
+              <td
+                  class="px-6 py-4 text-sm font-bold text-center whitespace-nowrap"
+              >
+                {{item.product.stock}}
+              </td>
+              <td
+                  class="px-6 py-4 text-sm font-bold text-right whitespace-nowrap"
+                  v-if="(item.quantity > item.product.stock)"
+              >
+                <ul class="">
+                  <li v-for="supplier in item.product.suppliers">
+                    {{supplier.name}}
+                    <ul>
+                      <li class="text-gray-500 font-black">
+                        {{ supplier.mobile }}
+                      </li>
+                      <li class="text-gray-500 font-black">
+                        {{ supplier.email }}
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+      </table>
       <br>
     </div>
   </div>
