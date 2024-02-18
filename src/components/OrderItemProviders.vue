@@ -14,10 +14,10 @@
 <template>
   <div>
     <p>
-      <span class="text-gray-500 font-black">{{item.product.name}} </span>
+      <span class="text-gray-500 font-black">{{item.product.name}} <i v-if="itemMissing > 0"  class="fas fa-exclamation-triangle" style="color: orange;"></i></span>
     </p>
     <p class="text-blue-500 font-black">
-      - Cantidad pedida:
+      - Cantidad pedida que puede ser alistada:
       <span class="text-gray-500 font-black">
         {{item.quantity}}
       </span>
