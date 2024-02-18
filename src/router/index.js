@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from "../views/HomeView.vue";
 import OrderLayout from "../views/orders/OrderLayout.vue";
+import {useAuthSore} from "../stores/auth.js";
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,16 +9,40 @@ const router = createRouter({
         {
             path: '/',
             name: 'auth',
+            beforeEnter: (to, from, next) => {
+                const auth = useAuthSore();
+                if (auth.isAuthenticated()) {
+                    next('/orders');
+                } else {
+                    next();
+                }
+            },
             component: () => import('../views/auth/AuthLayout.vue'),
             children: [
                 {
                     path: 'registro',
                     name: 'register',
+                    beforeEnter: (to, from, next) => {
+                        const auth = useAuthSore();
+                        if (auth.isAuthenticated()) {
+                            next('/');
+                        } else {
+                            next();
+                        }
+                    },
                     component: () => import('../views/auth/RegisterView.vue')
                 },
                 {
                     path: 'login',
                     name: 'login',
+                    beforeEnter: (to, from, next) => {
+                        const auth = useAuthSore();
+                        if (auth.isAuthenticated()) {
+                            next('/orders');
+                        } else {
+                            next();
+                        }
+                    },
                     component: () => import('../views/auth/LoginView.vue')
                 }
             ]

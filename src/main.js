@@ -21,7 +21,7 @@ const app = createApp(App)
 app.provide('toast', $toast)
 app.use(createPinia());
 app.use(plugin, defaultConfig(config))
-app.use(router)
+app.use(router);
 
 
 app.mount('#app');
